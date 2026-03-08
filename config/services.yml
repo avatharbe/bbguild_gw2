@@ -3,7 +3,7 @@ services:
         class: avathar\bbguild_gw2\game\gw2_installer
         arguments:
             - '@dbal.conn'
-            - '@cache'
+            - '@cache.driver'
             - '@config'
             - '@user'
 
