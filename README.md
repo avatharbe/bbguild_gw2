@@ -1,7 +1,7 @@
 # bbGuild - Guild Wars 2
 [![Tests](https://github.com/avatharbe/bbguildgw2/actions/workflows/tests.yml/badge.svg)](https://github.com/avatharbe/bbguildgw2/actions/workflows/tests.yml)
 
-Game plugin that adds Guild Wars 2 support to [bbGuild](https://github.com/avandenberghe/bbguild).
+Game plugin that adds Guild Wars 2 support to [bbGuild](https://github.com/avatharbe/bbguild).
 
 ## Features
 
@@ -15,7 +15,7 @@ Game plugin that adds Guild Wars 2 support to [bbGuild](https://github.com/avand
 ## Requirements
 
 - phpBB >= 3.3.0
-- PHP >= 7.4.0
+- PHP >= 8.1.0
 - **bbGuild core** (`avathar/bbguild`) must be installed and enabled
 
 ## Installation
@@ -78,5 +78,5 @@ GW2 overrides the default Tank/Healer/DPS roles:
 
 ## Links
 
-- [bbGuild Core](https://github.com/avandenberghe/bbguild)
-- [Issue Tracker](https://github.com/avandenberghe/bbguild/issues)
+- [bbGuild Core](https://github.com/avatharbe/bbguild)
+- [Issue Tracker](https://github.com/avatharbe/bbguildgw2/issues)
