@@ -12,13 +12,14 @@
 namespace avathar\bbguildgw2\game;
 
 use avathar\bbguild\model\games\game_provider_interface;
+use avathar\bbguild\model\games\specialization_provider_interface;
 
 /**
  * Class gw2_provider
  *
  * @package avathar\bbguildgw2\game
  */
-class gw2_provider implements game_provider_interface
+class gw2_provider implements game_provider_interface, specialization_provider_interface
 {
 	/** @var gw2_installer */
 	private $installer;
@@ -131,5 +132,93 @@ class gw2_provider implements game_provider_interface
 			'PLATE'   => 'Plate',
 			'ROBE'    => 'Robes',
 		);
+	}
+
+	/**
+	 * Elite Specialization catalog (issue #331 Phase 4), keyed by class_id
+	 * (see game/gw2_installer.php's install_classes() for the id map).
+	 *
+	 * role_id matches this plugin's Damage/Support/Control override of the
+	 * standard roles (see install_roles(): 0 Damage, 1 Support, 2 Control),
+	 * assigned to each elite spec's primary role in established raid/WvW
+	 * meta play, not every possible build — several specs (e.g. Catalyst,
+	 * Vindicator) can flex into other roles depending on traits/gear.
+	 *
+	 * spec_icon intentionally left empty: no icon assets exist yet for
+	 * these specs. Core handles the empty-icon case already (roster spec
+	 * resolution has dedicated test coverage for it). Tracked separately
+	 * as a follow-up.
+	 *
+	 * @return array<int, list<array{spec_name:string,role_id:int,spec_icon:string,spec_order:int}>>
+	 */
+	public static function spec_catalog(): array
+	{
+		[$damage, $support, $control] = [0, 1, 2];
+
+		return array(
+			1 => array( // Warrior
+				array('spec_name' => 'Berserker',    'role_id' => $damage,  'spec_icon' => '', 'spec_order' => 1),
+				array('spec_name' => 'Spellbreaker',  'role_id' => $control, 'spec_icon' => '', 'spec_order' => 2),
+				array('spec_name' => 'Bladesworn',    'role_id' => $damage,  'spec_icon' => '', 'spec_order' => 3),
+			),
+			2 => array( // Guardian
+				array('spec_name' => 'Dragonhunter', 'role_id' => $damage,  'spec_icon' => '', 'spec_order' => 1),
+				array('spec_name' => 'Firebrand',    'role_id' => $support, 'spec_icon' => '', 'spec_order' => 2),
+				array('spec_name' => 'Willbender',   'role_id' => $damage,  'spec_icon' => '', 'spec_order' => 3),
+			),
+			3 => array( // Engineer
+				array('spec_name' => 'Scrapper',   'role_id' => $support, 'spec_icon' => '', 'spec_order' => 1),
+				array('spec_name' => 'Holosmith',  'role_id' => $damage,  'spec_icon' => '', 'spec_order' => 2),
+				array('spec_name' => 'Mechanist',  'role_id' => $support, 'spec_icon' => '', 'spec_order' => 3),
+			),
+			4 => array( // Ranger
+				array('spec_name' => 'Druid',     'role_id' => $support, 'spec_icon' => '', 'spec_order' => 1),
+				array('spec_name' => 'Soulbeast', 'role_id' => $damage,  'spec_icon' => '', 'spec_order' => 2),
+				array('spec_name' => 'Untamed',   'role_id' => $damage,  'spec_icon' => '', 'spec_order' => 3),
+			),
+			5 => array( // Thief
+				array('spec_name' => 'Daredevil', 'role_id' => $damage,  'spec_icon' => '', 'spec_order' => 1),
+				array('spec_name' => 'Deadeye',   'role_id' => $damage,  'spec_icon' => '', 'spec_order' => 2),
+				array('spec_name' => 'Specter',   'role_id' => $support, 'spec_icon' => '', 'spec_order' => 3),
+			),
+			6 => array( // Elementalist
+				array('spec_name' => 'Tempest',   'role_id' => $support, 'spec_icon' => '', 'spec_order' => 1),
+				array('spec_name' => 'Weaver',    'role_id' => $damage,  'spec_icon' => '', 'spec_order' => 2),
+				array('spec_name' => 'Catalyst',  'role_id' => $support, 'spec_icon' => '', 'spec_order' => 3),
+			),
+			7 => array( // Mesmer
+				array('spec_name' => 'Chronomancer', 'role_id' => $control, 'spec_icon' => '', 'spec_order' => 1),
+				array('spec_name' => 'Mirage',       'role_id' => $damage,  'spec_icon' => '', 'spec_order' => 2),
+				array('spec_name' => 'Virtuoso',     'role_id' => $damage,  'spec_icon' => '', 'spec_order' => 3),
+			),
+			8 => array( // Necromancer
+				array('spec_name' => 'Reaper',     'role_id' => $damage,  'spec_icon' => '', 'spec_order' => 1),
+				array('spec_name' => 'Scourge',    'role_id' => $control, 'spec_icon' => '', 'spec_order' => 2),
+				array('spec_name' => 'Harbinger',  'role_id' => $damage,  'spec_icon' => '', 'spec_order' => 3),
+			),
+			9 => array( // Revenant
+				array('spec_name' => 'Herald',     'role_id' => $support, 'spec_icon' => '', 'spec_order' => 1),
+				array('spec_name' => 'Renegade',   'role_id' => $control, 'spec_icon' => '', 'spec_order' => 2),
+				array('spec_name' => 'Vindicator', 'role_id' => $damage,  'spec_icon' => '', 'spec_order' => 3),
+			),
+		);
+	}
+
+	/**
+	 * @inheritdoc
+	 */
+	public function get_spec_label(): string
+	{
+		return 'Elite Specialization';
+	}
+
+	/**
+	 * Interface implementation: delegates to the static catalog.
+	 *
+	 * @return array<int, list<array{spec_name:string,role_id:int,spec_icon:string,spec_order:int}>>
+	 */
+	public function get_specializations(): array
+	{
+		return self::spec_catalog();
 	}
 }
