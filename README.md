@@ -10,7 +10,7 @@ Guild Wars 2 never had a holy trinity, and its guilds reflect that — WvW guild
 
 - **GW2 Professions** - 10 professions (Warrior, Guardian, Engineer, Ranger, Thief, Elementalist, Mesmer, Necromancer, Revenant) with color codes
 - **GW2 Races** - 5 playable races (Sylvari, Norn, Charr, Asura, Human)
-- **Factions** - Tyria and Zaithan
+- **Factions** - Tyria and Zhaitan
 - **Custom Roles** - GW2 uses Damage/Support/Control instead of the standard holy trinity (Tank/Healer/DPS)
 - **Localization** - Profession, race, and role names in English, French, German, and Italian
 - **Guild Emblems** - Includes GW2 API emblem assets (1459 images)
@@ -44,7 +44,7 @@ Guild Wars 2 never had a holy trinity, and its guilds reflect that — WvW guild
 | ID | Faction |
 |----|---------|
 | 1 | Tyria |
-| 2 | Zaithan |
+| 2 | Zhaitan |
 
 ### Professions (10)
 

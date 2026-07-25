@@ -30,7 +30,7 @@ class gw2_installer extends abstract_game_install
 		$this->db->sql_query('DELETE FROM ' . $this->table('bb_factions_table') . " WHERE game_id = '" . $this->db->sql_escape($this->game_id) . "'");
 		$sql_ary = array();
 		$sql_ary[] = array('game_id' => $this->game_id, 'faction_id' => 1, 'faction_name' => 'Tyria');
-		$sql_ary[] = array('game_id' => $this->game_id, 'faction_id' => 2, 'faction_name' => 'Zaithan');
+		$sql_ary[] = array('game_id' => $this->game_id, 'faction_id' => 2, 'faction_name' => 'Zhaitan');
 		$this->db->sql_multi_insert($this->table('bb_factions_table'), $sql_ary);
 	}
 
