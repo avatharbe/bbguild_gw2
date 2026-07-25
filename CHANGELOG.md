@@ -1,5 +1,8 @@
 # Changelog
 
+## 2.0.0-rc2 25/07/2026
+  - [FIX] Corrected the faction-name typo "Zaithan" → "Zhaitan". Game data verified current — all 9 professions and 5 races present (Elite Specializations are handled by the specialization system). (#1)
+
 ## 2.0.0-rc1 24/07/2026
   - [NEW] Elite Specialization catalog (bbguild#331 Phase 4) — 27 specs across all 9 professions
     - `gw2_provider` implements `specialization_provider_interface`; static `spec_catalog()` is the single source of truth
